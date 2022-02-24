@@ -14,7 +14,7 @@ WindowHandler::WindowHandler()
 
 WindowHandler::~WindowHandler()
 {
-	
+
 }
 
 void WindowHandler::RunWindow(bool* p_open)
@@ -25,7 +25,7 @@ void WindowHandler::RunWindow(bool* p_open)
 		ImGui::End();
 		return;
 	}
-	
+
 	ImGui::PushItemWidth(ImGui::GetFontSize() * -12);
 
 

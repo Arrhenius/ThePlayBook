@@ -15,7 +15,7 @@ public:
 	void	Render();
 	void	Disable();
 	void	Enable();
-	char*	getLabel();
+	char* getLabel();
 
 private:
 	bool	m_active;

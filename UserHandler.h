@@ -12,11 +12,11 @@ public:
 	~UserHandler();
 
 	// Getters
-	PlayBookHandler*	getPlayBook();
-	char*				getUsername();
-	char*				getEmail();
-	char*				getFirstName();
-	char*				getLastName();
+	PlayBookHandler* getPlayBook();
+	char* getUsername();
+	char* getEmail();
+	char* getFirstName();
+	char* getLastName();
 
 	// Setters
 	void				setUsername(const char* username);
@@ -29,7 +29,7 @@ private:
 	char				m_lastname[MAXNAMESZ];
 	char				m_username[MAXNAMESZ];
 	char				m_email[MAXEMAILSZ];
-	PlayBookHandler*	m_playbook;
+	PlayBookHandler* m_playbook;
 };
 
 

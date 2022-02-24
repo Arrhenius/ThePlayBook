@@ -20,7 +20,7 @@ public:
 	int		getHeight();
 	int		getWidth();
 	bool	getIsActive();
-	char*	getLabel();
+	char* getLabel();
 
 	// Setters
 	void	setHeight(int height);
@@ -102,7 +102,7 @@ private:
 
 	// This will be the data that will be copied to a UserHandler object
 	// Program will automatically clear data from memory once transferred
-	UserHandler*		userData;
+	UserHandler* userData;
 };
 
 

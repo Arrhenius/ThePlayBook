@@ -14,24 +14,24 @@ NewUserMenu::NewUserMenu()
 	memset(this, 0, sizeof(this));
 
 	m_height = 0;
-	m_width	= 0;
+	m_width = 0;
 	m_active = false;
 	m_formcomplete = false;
 
 	m_errorFirstName = false;
-	m_errorLastName	= false;
-	m_errorUsername	= false;
+	m_errorLastName = false;
+	m_errorUsername = false;
 	m_errorEmail = false;
 	m_errorPassword = false;
 
 	strcpy(m_label, "New User");
-	m_firstname[0]	= '\0';
-	m_lastname[0]	= '\0';
-	m_username[0]	= '\0';
-	m_email[0]		= '\0';
-	m_cmpemail[0]	= '\0';
-	m_password[0]	= '\0';
-	m_cmppw[0]		= '\0';
+	m_firstname[0] = '\0';
+	m_lastname[0] = '\0';
+	m_username[0] = '\0';
+	m_email[0] = '\0';
+	m_cmpemail[0] = '\0';
+	m_password[0] = '\0';
+	m_cmppw[0] = '\0';
 	userData = NULL;
 }
 
@@ -74,7 +74,7 @@ void NewUserMenu::NewUserForm()
 		ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 95 + adjustment));
 		ImGui::InputText("Last Name", m_lastname, sizeof(m_lastname), 0, 0, 0);
 	}
-	
+
 
 
 	ImGui::PushItemWidth(300);
@@ -92,7 +92,7 @@ void NewUserMenu::NewUserForm()
 
 	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 + 85 + adjustment));
 	ImGui::InputText("Password", m_password, sizeof(m_password), ImGuiInputTextFlags_Password, 0, 0);
-	
+
 
 	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 + 130 + adjustment));
 	ImGui::InputText("Confirm Password", m_cmppw, sizeof(m_cmppw), ImGuiInputTextFlags_Password, 0, 0);
@@ -103,7 +103,7 @@ void NewUserMenu::NewUserForm()
 
 void NewUserMenu::handleFirstNameField(ImVec2 wndSz, int adjustment)
 {
-	
+
 
 	if (getErrorFirstName() == true && m_firstname[0] != '\0' && m_firstname[0] != '\n')
 	{
@@ -261,7 +261,7 @@ void NewUserMenu::NewUserButtons()
 			SaveData();
 			Disable();
 		}
-			
+
 		//if(m_formcomplete == true)
 		// When button is pressed data that was entered will now be passed to the UserHandler
 		// class and will store the data accordingly in the application
@@ -276,13 +276,13 @@ void NewUserMenu::ClearNewUserData()
 	m_errorUsername = false;
 	m_errorEmail = false;
 	m_errorPassword = false;
-	memset(m_firstname,	0, sizeof(m_firstname));
-	memset(m_lastname,	0, sizeof(m_lastname));
-	memset(m_username,	0, sizeof(m_username));
-	memset(m_email,		0, sizeof(m_email));
-	memset(m_cmpemail,	0, sizeof(m_cmpemail));
-	memset(m_password,	0, sizeof(m_password));
-	memset(m_cmppw,		0, sizeof(m_cmppw));
+	memset(m_firstname, 0, sizeof(m_firstname));
+	memset(m_lastname, 0, sizeof(m_lastname));
+	memset(m_username, 0, sizeof(m_username));
+	memset(m_email, 0, sizeof(m_email));
+	memset(m_cmpemail, 0, sizeof(m_cmpemail));
+	memset(m_password, 0, sizeof(m_password));
+	memset(m_cmppw, 0, sizeof(m_cmppw));
 }
 
 
@@ -293,16 +293,16 @@ void NewUserMenu::ClearNewUserData()
 /*
  * This function is meant to save data in an encrypted/hashed manner
  * that currently is not implemented. It will be implemented before
- * release of this tool because user data is treated as the most 
+ * release of this tool because user data is treated as the most
  * important thing I should ever properly handle and I will always
- * see user data in this manner. 
+ * see user data in this manner.
  */
 void NewUserMenu::SaveData()
 {
 	// TODO: Function incomplete 
 	char path[MAXBUFSZ];
 	memset(path, 0, sizeof(path));
-	if(getcwd(path, MAXBUFSZ))
+	if (getcwd(path, MAXBUFSZ))
 		printf("Directory path: %s\n", path);
 }
 
@@ -442,19 +442,19 @@ void NewUserMenu::ValidateUsername()
  * what I will be using until something seriously breaks
  *
  * const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
- * 
+ *
  */
 
 
-/* 
- * This function will perform a variety of email checks to
- * check the validity of the provided email
- * 
- * TODO: Create individual error handlers for each error and
- * display that error to the user or them to fix
- */
+ /*
+  * This function will perform a variety of email checks to
+  * check the validity of the provided email
+  *
+  * TODO: Create individual error handlers for each error and
+  * display that error to the user or them to fix
+  */
 void NewUserMenu::ValidateEmail()
-{	
+{
 	char* p = m_email;
 	if (*p == '\n' || *p == '\0')
 	{
@@ -474,7 +474,7 @@ void NewUserMenu::ValidateEmail()
 
 
 
-/* 
+/*
  * Checks to see if passwords entered match and verifies if
  * the password is of a correct length.
  */
@@ -482,7 +482,7 @@ void NewUserMenu::ValidateEmail()
 void NewUserMenu::ValidatePassword()
 {
 	if (m_password[0] == '\n' || m_password[0] == '\0' ||
-		m_cmppw[0] == '\n' || m_cmppw[0] == '\0' )
+		m_cmppw[0] == '\n' || m_cmppw[0] == '\0')
 	{
 		setErrorFirstName(true);
 		return;
@@ -542,7 +542,7 @@ void NewUserMenu::Render()
 	if (getIsActive() == false)
 		return;
 	//ImGui::SetNextWindowSize()
-	
+
 	if (ImGui::Begin(m_label, 0, 0))
 	{
 		NewUserForm();

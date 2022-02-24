@@ -211,10 +211,10 @@ void MapTexture::LoadMapTexture(int flags, LPDIRECT3DDEVICE9* g_Device)
 
 
 // Simple helper function to load an image into a DX9 texture with common settings
-bool MapTexture::LoadTextureFromFile(LPDIRECT3DDEVICE9* g_Device, 
-									const char* filename, 
-									PDIRECT3DTEXTURE9* out_texture, 
-									int* out_width, int* out_height)
+bool MapTexture::LoadTextureFromFile(LPDIRECT3DDEVICE9* g_Device,
+	const char* filename,
+	PDIRECT3DTEXTURE9* out_texture,
+	int* out_width, int* out_height)
 {
 	// Load texture from disk
 	PDIRECT3DTEXTURE9 texture;
@@ -325,7 +325,7 @@ void MapTexture::Render()
 
 
 
-		
+
 		//ImGui::Image((void*)getTexture(), ImVec2(getWidth(), getHeight()));
 
 
@@ -344,9 +344,9 @@ void MapTexture::Render()
 
 
 		// Draw a red circle
-		draw_list->AddImage((void*)getTexture(),canvas_p0, canvas_p1, ImVec2(0,0), ImVec2(1,1), IM_COL32(255, 255, 255, 255));
+		draw_list->AddImage((void*)getTexture(), canvas_p0, canvas_p1, ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255));
 		//draw_list->AddImage((void*)getTexture(), canvas_p0, canvas_p1, ImVec2(0, 0), ImVec2(1, 1));
-		
+
 
 		// This will catch our interactions
 		ImGui::InvisibleButton("canvas", canvas_sz, ImGuiButtonFlags_MouseButtonLeft | ImGuiButtonFlags_MouseButtonRight);
@@ -354,7 +354,7 @@ void MapTexture::Render()
 		const bool is_active = ImGui::IsItemActive();	// Held
 		const ImVec2 origin(canvas_p0.x + scrolling.x, canvas_p0.y + scrolling.y); // Lock scrolled origin
 		const ImVec2 mouse_pos_in_canvas(io.MousePos.x - origin.x, io.MousePos.y - origin.y);
-		
+
 
 		//draw_list->AddCircleFilled(ImVec2(p.x + 50, p.y + 50), 30.0f, IM_COL32(255, 0, 0, 255), 16);
 		// Draw a 3 pixel thick yellow line
@@ -423,13 +423,13 @@ void MapTexture::Render()
 #if 0
 		ImVec2 canvas_p0 = ImGui::GetCursorScreenPos();
 		ImVec2 canvas_sz = ImGui::GetContentRegionAvail();
-		
+
 		if (canvas_sz.x < 50.0f) canvas_sz.x = 50.0f;
 		if (canvas_sz.y < 50.0f) canvas_sz.y = 50.0f;
 		ImVec2 canvas_p1 = ImVec2(canvas_p0.x + canvas_sz.x, canvas_p0.y + canvas_sz.y);
 #endif
 		// Draw border and background color
-		
+
 		//draw_list->AddRectFilled(canvas_p0, canvas_p1, IM_COL32(50, 50, 50, 255));
 		//draw_list->AddRect(canvas_p0, canvas_p1, IM_COL32(255, 255, 255, 255));
 		//draw_list->AddImage()

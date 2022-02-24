@@ -56,7 +56,7 @@ void MainBarMenu::Render()
 			if (ImGui::MenuItem("Copy", "CTRL+C")) {}
 			if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 			ImGui::EndMenu();
-}
+		}
 		ImGui::EndMainMenuBar();
 	}
 

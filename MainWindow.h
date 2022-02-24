@@ -15,7 +15,7 @@ public:
 	// getters
 	int		getWidth();
 	int		getHeight();
-	char*	getLabel();
+	char* getLabel();
 
 	// setters
 	void	setWidth(int width);

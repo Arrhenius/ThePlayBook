@@ -16,7 +16,7 @@
 class Strat
 {
 public:
-	
+
 private:
 	// There is going to be an array of points
 	int size;

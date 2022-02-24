@@ -24,35 +24,35 @@ static D3DPRESENT_PARAMETERS	g_d3dpp = {};
 
 // Code for separators
 #if 0
-	ImGui::Begin("Splitter test");
+ImGui::Begin("Splitter test");
 
-	static float w = 200.0f;
-	static float h = 300.0f;
-	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-	ImGui::BeginChild("child1", ImVec2(w, h), true);
-	ImGui::EndChild();
-	ImGui::SameLine();
-	ImGui::InvisibleButton("vsplitter", ImVec2(8.0f, h));
-	if (ImGui::IsItemActive())
-	w += ImGui::GetIO().MouseDelta.x;
-	ImGui::SameLine();
-	ImGui::BeginChild("child2", ImVec2(0, h), true);
-	ImGui::EndChild();
-	ImGui::InvisibleButton("hsplitter", ImVec2(-1, 8.0f));
-	if (ImGui::IsItemActive())
-	h += ImGui::GetIO().MouseDelta.y;
-	ImGui::BeginChild("child3", ImVec2(0, 0), true);
-	ImGui::EndChild();
-	ImGui::PopStyleVar();
+static float w = 200.0f;
+static float h = 300.0f;
+ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+ImGui::BeginChild("child1", ImVec2(w, h), true);
+ImGui::EndChild();
+ImGui::SameLine();
+ImGui::InvisibleButton("vsplitter", ImVec2(8.0f, h));
+if (ImGui::IsItemActive())
+w += ImGui::GetIO().MouseDelta.x;
+ImGui::SameLine();
+ImGui::BeginChild("child2", ImVec2(0, h), true);
+ImGui::EndChild();
+ImGui::InvisibleButton("hsplitter", ImVec2(-1, 8.0f));
+if (ImGui::IsItemActive())
+h += ImGui::GetIO().MouseDelta.y;
+ImGui::BeginChild("child3", ImVec2(0, 0), true);
+ImGui::EndChild();
+ImGui::PopStyleVar();
 
-	ImGui::End();
+ImGui::End();
 #endif
 
 
 
 #if 0
 // Simple helper function to load an image into a DX9 texture with common settings
-bool LoadTextureFromFile(const char* filename, PDIRECT3DTEXTURE9* out_texture, int* out_width, int* out_height)
+bool LoadTextureFromFile(const char* filename, PDIRECT3DTEXTURE9 * out_texture, int* out_width, int* out_height)
 {
 	// Load texture from disk
 	PDIRECT3DTEXTURE9 texture;
@@ -198,7 +198,7 @@ int main(int nargs, char* argv[])
 	ZeroMemory(&msg, sizeof(msg));
 
 
-	#if 0
+#if 0
 
 	//float texture_w = (float)io.Fonts->TexWidth;
 	//float texture_h = (float)io.Fonts->TexHeight;
@@ -216,7 +216,7 @@ int main(int nargs, char* argv[])
 	bool ret2 = LoadTextureFromFile("C:\\Users\\Jetfo\\Desktop\\CSGOMaps\\de_mirage_radar.dds",
 		&my_tex, &my_width, &my_height);
 	IM_ASSERT(ret);
-	#endif
+#endif
 
 
 
@@ -225,7 +225,7 @@ int main(int nargs, char* argv[])
 	/*** Load all map textures before main loop ***/
 	/**********************************************/
 
-	MapTextureHandler*	gameMaps = new MapTextureHandler(&g_pd3dDevice);
+	MapTextureHandler* gameMaps = new MapTextureHandler(&g_pd3dDevice);
 	MapTexture			tempTex;
 	int					i;
 	for (i = 1; i < MapTexture_COUNT; i++)
@@ -254,7 +254,7 @@ int main(int nargs, char* argv[])
 
 	/*************************************************/
 
-	
+
 	while (msg.message != WM_QUIT)
 	{
 		if (::PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
@@ -288,7 +288,7 @@ int main(int nargs, char* argv[])
 
 		int gameWindowFlags = 0;
 		static bool run = true;
-			
+
 		ImGui::ShowDemoWindow();
 		//LoginMenu* login = new LoginMenu();
 
@@ -297,24 +297,24 @@ int main(int nargs, char* argv[])
 		barmenu->Render();
 		newUser->Render();
 		//main->Render();
-		
-		
+
+
 		mTex2.Render();
-		
-
-	   // IM_ASSERT(ret);
-		/*
-		* float texture_w = (float)io.Fonts->TexWidth;
-		float texture_h = (float)io.Fonts->TexHeight;
-		int my_image_width = 0;
-		int my_image_height = 0;
-		PDIRECT3DTEXTURE9 my_texture = NULL;
-		bool ret = LoadTextureFromFile("C:\\Users\\Jetfo\\Desktop\\CSGOMaps\\de_inferno_radar.png",
-										&my_texture, &my_image_width, &my_image_height);
-		*/
 
 
-		//printf("I'm here right now\n\n");
+		// IM_ASSERT(ret);
+		 /*
+		 * float texture_w = (float)io.Fonts->TexWidth;
+		 float texture_h = (float)io.Fonts->TexHeight;
+		 int my_image_width = 0;
+		 int my_image_height = 0;
+		 PDIRECT3DTEXTURE9 my_texture = NULL;
+		 bool ret = LoadTextureFromFile("C:\\Users\\Jetfo\\Desktop\\CSGOMaps\\de_inferno_radar.png",
+										 &my_texture, &my_image_width, &my_image_height);
+		 */
+
+
+		 //printf("I'm here right now\n\n");
 #if 0
 		MapTexture mTex = gameMaps->getMapTexture(MapTexture_Ancient);
 		MapTexture mTex2 = gameMaps->getMapTexture(MapTexture_Mirage);
@@ -349,11 +349,11 @@ int main(int nargs, char* argv[])
 			MapTexture mTex = gameMaps->getMapTexture(MapTexture_Ancient);
 			ImGui::Image((void*)mTex.getTexture(), ImVec2(mTex.getWidth(), mTex.getHeight()));
 			//ImGui::Text("size = %d x %d", )
-	}
+		}
 		ImGui::End();
 
 #endif
-	#if 0
+#if 0
 		if (ImGui::Begin("Image Demo", &run, 0))
 		{
 			//ImGui::Text("pointer = %p", my_texture);
@@ -370,10 +370,10 @@ int main(int nargs, char* argv[])
 
 		ImGui::End();
 
-	#endif
-			/*****************************************************************/
-			/************************** CODE ENDS ****************************/
-			/*****************************************************************/
+#endif
+		/*****************************************************************/
+		/************************** CODE ENDS ****************************/
+		/*****************************************************************/
 
 
 
@@ -381,24 +381,24 @@ int main(int nargs, char* argv[])
 
 
 
-			// Rendering
-			ImGui::EndFrame();
-			g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, false);
-			g_pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
-			g_pd3dDevice->SetRenderState(D3DRS_SCISSORTESTENABLE, false);
-			D3DCOLOR clear_col_dx = D3DCOLOR_RGBA((int)(clear_color.x * 255.0f), (int)(clear_color.y * 255.0f), (int)(clear_color.z * 255.0f), (int)(clear_color.w * 255.0f));
-			g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clear_col_dx, 1.0f, 0);
-			if (g_pd3dDevice->BeginScene() >= 0)
-			{
-				ImGui::Render();
-				ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
-				g_pd3dDevice->EndScene();
-			}
-			HRESULT result = g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
+		// Rendering
+		ImGui::EndFrame();
+		g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, false);
+		g_pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
+		g_pd3dDevice->SetRenderState(D3DRS_SCISSORTESTENABLE, false);
+		D3DCOLOR clear_col_dx = D3DCOLOR_RGBA((int)(clear_color.x * 255.0f), (int)(clear_color.y * 255.0f), (int)(clear_color.z * 255.0f), (int)(clear_color.w * 255.0f));
+		g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clear_col_dx, 1.0f, 0);
+		if (g_pd3dDevice->BeginScene() >= 0)
+		{
+			ImGui::Render();
+			ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
+			g_pd3dDevice->EndScene();
+		}
+		HRESULT result = g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
 
-			// Handle loss of D3D9 device
-			if (result == D3DERR_DEVICELOST && g_pd3dDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET)
-				ResetDevice();
+		// Handle loss of D3D9 device
+		if (result == D3DERR_DEVICELOST && g_pd3dDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET)
+			ResetDevice();
 
 
 

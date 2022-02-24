@@ -9,7 +9,7 @@ class LoginMenu
 public:
 	LoginMenu();
 	~LoginMenu();
-	
+
 
 	// UI prototypes
 	void		Render();
@@ -31,7 +31,7 @@ private:
 	char		m_label[MAXLABELSZ];
 	char		m_username[MAXNAMESZ];
 	char		m_password[MAXPWSZ];
-	
+
 };
 
 

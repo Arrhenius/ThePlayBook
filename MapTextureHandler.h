@@ -40,9 +40,9 @@ public:
 	PDIRECT3DTEXTURE9	getTexture();
 	int					getWidth();
 	int					getHeight();
-	const char*			getFilepath();
-	const char*			getMapTextureFlagToString(int flag);
-	char*				getMapName();
+	const char* getFilepath();
+	const char* getMapTextureFlagToString(int flag);
+	char* getMapName();
 
 	// Setters
 	void				setHeight(int ht);
@@ -70,7 +70,7 @@ private:
 	int					m_height;
 	char				m_filepath[MAX_PATH];
 	char				m_mapname[NAMEMAX];
-	
+
 	// Some variable here will be needed for draw data on the map and
 	// another variable for holding all the plays for this map that
 	// have been created and saved
@@ -106,9 +106,9 @@ public:
 	//bool	LoadTextureFromFile(LPDIRECT3DDEVICE9* g_Device, const char* filename, PDIRECT3DTEXTURE9* out_texture, int* out_width, int* out_height);
 	//void	AddDrawData(int data);
 	//void	createNewMapTexture();
-	
+
 private:
-	LPDIRECT3DDEVICE9*		pDevice;
+	LPDIRECT3DDEVICE9* pDevice;
 	std::vector<MapTexture> m_mapTextures;
 };
 
