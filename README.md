@@ -12,6 +12,10 @@ play will be executed.
 
 ## Development
 
+Currently I can not guarantee anything will run for you at this time, anything that happens to run also happens to have many features
+disabled for debugging purposes and any attempt to run this on your system will probably involve small hacks if they happen to be needed.
+
+
 The development of this tool is done on my free time (which is scarce) and due to that, is currently using the most unreliable approach:
 the code and fix method. For now this will be my initial approach just to get to a beta stage and then refactor the tool and
 give it an appropriate design. Part of the reasoning behind this is I am also learning how to use ImGui and DirectX9 features so it
