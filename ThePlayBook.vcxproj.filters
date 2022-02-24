@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Handlers">
+      <UniqueIdentifier>{2f7e0511-120b-4623-b17a-f0c8676721a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Notes">
+      <UniqueIdentifier>{693e3477-1f0c-4ca7-8825-fa37d885e073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{cd46ad10-d4ce-41fd-bc6e-929575bb1193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\MapTextureHandlers">
+      <UniqueIdentifier>{8e3cd7f8-fc64-4953-8592-bf03944fa733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\MapTextureHandlers\MapTextures">
+      <UniqueIdentifier>{438f17be-5d7b-4a11-9019-556c839abddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\PlayBookHandler">
+      <UniqueIdentifier>{8c2b7ede-525a-452a-8704-2a5dabd4745f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\WindowHandler">
+      <UniqueIdentifier>{5a841529-57be-4adc-ad0e-913751e1d430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\WindowHandler\Menus">
+      <UniqueIdentifier>{78107e37-1535-4341-b5fc-39cda272e02f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\WindowHandler\Menus\Headers">
+      <UniqueIdentifier>{e3c802e1-9e84-4292-9a64-ed5dbb47a84a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\UserHandler">
+      <UniqueIdentifier>{1cc13c2d-b8dc-4753-8ddb-f8d4ea181a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{9f86ab4c-1f4f-4fca-a500-2eb4baf6dfa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\FileSystemHandler">
+      <UniqueIdentifier>{7595c6c9-b753-4837-9090-027a0bbffbb0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Design.txt">
+      <Filter>Notes</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_dx9.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_win32.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowHandler.h">
+      <Filter>Handlers\WindowHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTextureHandler.h">
+      <Filter>Handlers\MapTextureHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NewUserMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBarMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UserHandler.h">
+      <Filter>Handlers\UserHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayBookHandler.h">
+      <Filter>Handlers\PlayBookHandler</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_dx9.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_win32.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowHandler.cpp">
+      <Filter>Handlers\WindowHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTextureHandler.cpp">
+      <Filter>Handlers\MapTextureHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="NewUserMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MainBarMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="UserHandler.cpp">
+      <Filter>Handlers\UserHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftOutCode.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_ancient_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_cache_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_dust2_higher_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_dust2_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_inferno_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_mirage_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_nuke_lower_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_nuke_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_overpass_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_train_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_vertigo_lower_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+    <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_vertigo_radar.dds">
+      <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

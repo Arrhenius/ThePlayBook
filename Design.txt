@@ -1,0 +1,15 @@
+This is a simple text file where I will display my thoughts on the design of the software,
+design ideas, and anything else I may come up with that I want to be in the software.
+
+
+Goal:
+	To be able to create simple plays of a strategy that will be played out
+	in a Counter Strike Global Offensive match. To be able to share new ideas on
+	a canvas using paint like tools and predefined buttons. You can save a variety
+	of these plays and create your own playbook for your team.
+
+	Initial goals will be:
+		-able to try and read in an image of the map that displays it on a canvas.
+		-Login to an account
+		-Be able to draw on the canvas
+		-save that 
