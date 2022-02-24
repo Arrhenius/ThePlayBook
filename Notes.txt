@@ -1,0 +1,48 @@
+This is a simple text file where I will display my thoughts on the design of the software,
+design ideas, and anything else I may come up with that I want to be in the software.
+
+
+Goal:
+	To be able to create simple plays of a strategy that will be played out
+	in a Counter Strike Global Offensive match. To be able to share new ideas on
+	a canvas using paint like tools and predefined buttons. You can save a variety
+	of these plays and create your own playbook for your team.
+
+	Initial goals will be:
+		-able to try and read in an image of the map that displays it on a canvas.
+		-Login to an account
+		-Be able to draw on the canvas
+		-save that 
+
+
+---Development Decisions Made While Working On Tool---
+
+I spent a great deal of time programming in C because of college so transitioning
+from C to C++ has been an interesting hurdle because it is so easy for me to just
+write C just out of habit. My style might deviate from time to time simply because
+I am still trying to adjust to a pure C++ convention. For now my objective is to have
+a more orthodox approach to my C++ style. As time progresses this will probably change
+but I find it easier to read this style of code than more modern C++. And some of my
+decisions are probably just based on ignorance that I'll fix as I learn more about 
+the language.
+
+
+
+---Discoveries---
+
+I've always been used to zeroing out memory when working with C but when approaching
+my current problems with this approach I discovered using functions such as memset()
+didn't seem to provide the seem result as I would expect it to in C. This discovery
+came when trying to clear form data on a menu. It appeared that if I tried to memset()
+the menu by doing
+
+	memset(this, 0, sizeof(this));
+
+or even
+
+	memset(this, 0, sizeof(*this));
+
+The end result was the memory was not clearing. And this posed a problem. I had already
+taken the time to implement the function in a variety of places within the program
+with the understanding the function would generate the result I was used to but it appeared
+it was doing absolutely nothing of the sort.
