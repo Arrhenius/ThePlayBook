@@ -9,10 +9,12 @@
 
 LoginMenu::LoginMenu()
 {
-	memset(this, 0, sizeof(this));
 	m_width = 0;
 	m_height = 0;
 	m_active = false;
+	memset(m_label, 0, sizeof(m_label));
+	memset(m_username, 0, sizeof(m_username));
+	memset(m_password, 0, sizeof(m_password));
 	strcpy(m_label, "Login");
 	m_username[0] = '\0';
 	m_password[0] = '\0';
