@@ -32,7 +32,7 @@ the language.
 
 I've always been used to zeroing out memory when working with C but when approaching
 my current problems with this approach I discovered using functions such as memset()
-didn't seem to provide the seem result as I would expect it to in C. This discovery
+didn't seem to provide the same result as I would expect it to in C. This discovery
 came when trying to clear form data on a menu. It appeared that if I tried to memset()
 the menu by doing
 
@@ -44,5 +44,43 @@ or even
 
 The end result was the memory was not clearing. And this posed a problem. I had already
 taken the time to implement the function in a variety of places within the program
-with the understanding the function would generate the result I was used to but it appeared
-it was doing absolutely nothing of the sort.
+with the understanding that the function would generate the result I was used to but it appeared
+it was doing absolutely nothing of the sort. Countless Google searches later and
+the solutions became even more bizzare. For something as simple as clearing memory
+solutions got so complex that I simply could not believe they were actual solutions.
+Complex templates that were daunting to read, creating a class to manage classes that
+need their memory cleared, a long explanation of the standard and what it does but ending
+that explanation with "but honestly, I don't know," and the list went on. So I did my
+own detective work. Since I'm using ImGui, I can see things update instantly. So I went to work.
+
+This is what I discovered:
+
+When an instance of an object exists, it is completely removed from memory by calling
+
+	memset(this, 0, sizeof(*the object we are referring to*))
+
+For sizeof I actually put the name of the class in there and it appears that
+completely removes it from memory, closes that menu and in order to open it I have to 
+reenable it. Same thing for this memset
+
+	memset(this, 0, sizeof(*this));
+
+
+These seemed to cause a problem. If I actually applied the 2nd example to the constructor
+of my menu class I had reduced frame rate to my program and overall poor performance because of it.
+Because we are within a game loop, it is safe to say this class is probably being destroyed
+and created over and over. But what I found interesting was the class was persisting no matter how
+much it was destroyed. The data that was supposed to be cleared never was being cleared. This lead 
+me to the discovery that C++ is probably adding bookkeeping data to the class and extra bloat 
+that I'm currently ignorant of. 
+
+
+Whatever the real reason for all this was, it didn't matter, this method wasn't going to work for me. 
+
+So my approach to this problem was to memset any POD types and explicitly initialize anything else.
+This worked. Instantly. Everything was behaving correctly and was generating the result I was looking
+for originally. This pretty much confirmed to me that there is underlying C++ work that manages any
+instances of classes.
+
+TL,DR; I don't know how C++ works yet.
+
