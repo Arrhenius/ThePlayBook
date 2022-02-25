@@ -9,7 +9,7 @@
 
 LoginMenu::LoginMenu()
 {
-	memset(this, 0, sizeof(0));
+	memset(this, 0, sizeof(this));
 	m_width = 0;
 	m_height = 0;
 	m_active = false;
