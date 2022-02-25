@@ -9,9 +9,15 @@
 #include <regex>
 
 
+
+/* Note on constructor:
+ *
+ * 
+ * 
+ */
+
 NewUserMenu::NewUserMenu()
 {
-	memset(this, 0, sizeof(this));
 
 	m_height = 0;
 	m_width = 0;
@@ -23,6 +29,15 @@ NewUserMenu::NewUserMenu()
 	m_errorUsername = false;
 	m_errorEmail = false;
 	m_errorPassword = false;
+
+	memset(m_label, 0, sizeof(m_label));
+	memset(m_firstname, 0, sizeof(m_firstname));
+	memset(m_lastname, 0, sizeof(m_lastname));
+	memset(m_username, 0, sizeof(m_username));
+	memset(m_email, 0, sizeof(m_email));
+	memset(m_cmpemail, 0, sizeof(m_cmpemail));
+	memset(m_password, 0, sizeof(m_password));
+	memset(m_cmppw, 0, sizeof(m_cmppw));
 
 	strcpy(m_label, "New User");
 	m_firstname[0] = '\0';
@@ -161,57 +176,59 @@ void NewUserMenu::handleUsernameField(ImVec2 wndSz, int adjustment)
 
 void NewUserMenu::handleEmailField(ImVec2 wndSz, int adjustment)
 {
+	bool errEnabled = false;
 
 	// First email field
 	if (getErrorEmail() == true && m_email[0] != '\0' && m_email[0] != '\n')
 	{
+		errEnabled = true;
 		ImGui::PushStyleColor(ImGuiCol_Border, IM_COL32(255, 0, 0, 255));
 		ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 2.0f);
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 - 5 + adjustment));
-		ImGui::InputText("Email", m_email, sizeof(m_email), 0, 0, 0);
+	}
+	ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 - 5 + adjustment));
+	ImGui::InputText("Email", m_email, sizeof(m_email), 0, 0, 0);
+	if (errEnabled)
+	{
 		ImGui::PopStyleVar();
 		ImGui::PopStyleColor();
-	}
-	else
-	{
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 - 5 + adjustment));
-		ImGui::InputText("Email", m_email, sizeof(m_email), 0, 0, 0);
+		errEnabled = false;
 	}
 
 	// 2nd email field
 	if (getErrorEmail() == true && m_cmpemail[0] != '\0' && m_cmpemail[0] != '\n')
 	{
+		errEnabled = true;
 		ImGui::PushStyleColor(ImGuiCol_Border, IM_COL32(255, 0, 0, 255));
 		ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 2.0f);
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 40 + adjustment));
-		ImGui::InputText("Confirm Email", m_cmpemail, sizeof(m_cmpemail), 0, 0, 0);
+	}
+	ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 40 + adjustment));
+	ImGui::InputText("Confirm Email", m_cmpemail, sizeof(m_cmpemail), 0, 0, 0);
+	if (errEnabled)
+	{
 		ImGui::PopStyleVar();
 		ImGui::PopStyleColor();
+		errEnabled = false;
 	}
-	else
-	{
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 40 + adjustment));
-		ImGui::InputText("Confirm Email", m_cmpemail, sizeof(m_cmpemail), 0, 0, 0);
-	}
+
 }
 
 void NewUserMenu::handlePasswordField(ImVec2 wndSz, int adjustment)
 {
-
+	bool errEnabled = false;
 	// This handles the first password field
-	if (getErrorLastName() == true && m_lastname[0] != '\0' && m_lastname[0] != '\n')
+	if (getErrorPassword() == true && m_password[0] != '\0' && m_lastname[0] != '\n')
 	{
+		errEnabled = true;
 		ImGui::PushStyleColor(ImGuiCol_Border, IM_COL32(255, 0, 0, 255));
 		ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 2.0f);
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 85 + adjustment));
-		ImGui::InputText("Password", m_password, sizeof(m_password), ImGuiInputTextFlags_Password, 0, 0);
+	}
+	ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 85 + adjustment));
+	ImGui::InputText("Password", m_password, sizeof(m_password), ImGuiInputTextFlags_Password, 0, 0);
+	if (errEnabled)
+	{
 		ImGui::PopStyleVar();
 		ImGui::PopStyleColor();
-	}
-	else
-	{
-		ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 180, wndSz.y / 2 + 85 + adjustment));
-		ImGui::InputText("Password", m_password, sizeof(m_password), ImGuiInputTextFlags_Password, 0, 0);
+		errEnabled = false;
 	}
 
 
@@ -276,6 +293,7 @@ void NewUserMenu::ClearNewUserData()
 	m_errorUsername = false;
 	m_errorEmail = false;
 	m_errorPassword = false;
+	
 	memset(m_firstname, 0, sizeof(m_firstname));
 	memset(m_lastname, 0, sizeof(m_lastname));
 	memset(m_username, 0, sizeof(m_username));
@@ -283,6 +301,7 @@ void NewUserMenu::ClearNewUserData()
 	memset(m_cmpemail, 0, sizeof(m_cmpemail));
 	memset(m_password, 0, sizeof(m_password));
 	memset(m_cmppw, 0, sizeof(m_cmppw));
+
 }
 
 
@@ -484,7 +503,7 @@ void NewUserMenu::ValidatePassword()
 	if (m_password[0] == '\n' || m_password[0] == '\0' ||
 		m_cmppw[0] == '\n' || m_cmppw[0] == '\0')
 	{
-		setErrorFirstName(true);
+		setErrorPassword(true);
 		return;
 	}
 	if (strcmp(m_password, m_cmppw) == 0)
