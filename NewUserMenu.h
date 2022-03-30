@@ -5,6 +5,14 @@
 #include "Helper.h"
 #include "UserHandler.h"
 
+#define SAVEDIR			"\\Local"
+#define SAVEFILEWSEP	"\\local.dat"
+#define SAVEFILE		"local.dat"
+
+
+// TODO: Abstract this class with another class or namespace
+// Current class design is a bit bloated and can probably
+// be simplified significantly
 class NewUserMenu
 {
 public:
@@ -20,7 +28,7 @@ public:
 	int		getHeight();
 	int		getWidth();
 	bool	getIsActive();
-	char* getLabel();
+	char*	getLabel();
 
 	// Setters
 	void	setHeight(int height);
@@ -69,6 +77,10 @@ private:
 	void	setErrorEmail(bool status);
 	void	setErrorPassword(bool status);
 	void	setIsFormComplete(bool status);
+
+
+	// Misc
+	void	SaveLocal(UserHandler* user);
 
 	// ******************** class members ****************************
 	int		m_height;
