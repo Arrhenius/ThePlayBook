@@ -1,20 +1,51 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
 
+
+
+
 #include "NewUserMenu.h"
 #include "imgui/imgui.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <direct.h>
 #include <regex>
+#include <fcntl.h>
+#include <sys/types.h>
+
+
+// Solution found:
+// https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
+
+// Might adjust this to something else in the future but for now will be used
+#ifdef WIN32
+#include <io.h>
+#define F_OK 0
+#define access _access
+#endif
+
+
+// Obtained from:
+// https://stackoverflow.com/questions/11238918/s-isreg-macro-undefined
+
+// Windows does not define the S_ISREG and S_ISDIR macros in stat.h, so we do.
+// We have to define _CRT_INTERNAL_NONSTDC_NAMES 1 before #including sys/stat.h
+// in order for Microsoft's stat.h to define names like S_IFMT, S_IFREG, and S_IFDIR,
+// rather than just defining  _S_IFMT, _S_IFREG, and _S_IFDIR as it normally does.
+#define _CRT_INTERNAL_NONSTDC_NAMES 1
+#include <sys/stat.h>
+#if !defined(S_ISREG) && defined(S_IFMT) && defined(S_IFREG)
+#define S_ISREG(m) (((m) & S_IFMT) == S_IFREG)
+#endif
+#if !defined(S_ISDIR) && defined(S_IFMT) && defined(S_IFDIR)
+#define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
+#endif
 
 
 
-/* Note on constructor:
- *
- * 
- * 
- */
+
+
+
 
 NewUserMenu::NewUserMenu()
 {
@@ -63,57 +94,14 @@ void NewUserMenu::NewUserForm()
 
 	int adjustment = -40;
 	//TODO: Use variables for position manipulation
-	// Draw the First Name input box
+	
 	ImGui::PushItemWidth(300);
-	//ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 140 + adjustment));
-	//ImGui::InputText("First Name", m_firstname, sizeof(m_firstname), 0, 0, 0);
-	//ImGui::PopItemWidth();
 	handleFirstNameField(wndSz, adjustment);
 	handleLastNameField(wndSz, adjustment);
 	handleUsernameField(wndSz, adjustment);
 	handleEmailField(wndSz, adjustment);
 	handlePasswordField(wndSz, adjustment);
 	ImGui::PopItemWidth();
-#if 0
-	if (getErrorLastName() == true && m_lastname[0] != '\0' && m_lastname[0] != '\n')
-	{
-		ImGui::PushStyleColor(ImGuiCol_Border, IM_COL32(255, 0, 0, 255));
-		ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 2.0f);
-		ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 95 + adjustment));
-		ImGui::InputText("Last Name", m_lastname, sizeof(m_lastname), 0, 0, 0);
-		ImGui::PopStyleVar();
-		ImGui::PopStyleColor();
-	}
-	else
-	{
-		ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 95 + adjustment));
-		ImGui::InputText("Last Name", m_lastname, sizeof(m_lastname), 0, 0, 0);
-	}
-
-
-
-	ImGui::PushItemWidth(300);
-	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 50 + adjustment));
-	ImGui::InputText("Username", m_username, sizeof(m_username), 0, 0, 0);
-
-	//ImGui::PushItemWidth(200);
-	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 - 5 + adjustment));
-	ImGui::InputText("Email", m_email, sizeof(m_email), 0, 0, 0);
-	ImGui::PopItemWidth();
-
-	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 + 40 + adjustment));
-	ImGui::InputText("Confirm Email", m_cmpemail, sizeof(m_cmpemail), 0, 0, 0);
-
-
-	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 + 85 + adjustment));
-	ImGui::InputText("Password", m_password, sizeof(m_password), ImGuiInputTextFlags_Password, 0, 0);
-
-
-	ImGui::SetCursorPos(ImVec2((v2First.x / 2) - 180, v2First.y / 2 + 130 + adjustment));
-	ImGui::InputText("Confirm Password", m_cmppw, sizeof(m_cmppw), ImGuiInputTextFlags_Password, 0, 0);
-	ImGui::PopItemWidth();
-#endif
-
 }
 
 void NewUserMenu::handleFirstNameField(ImVec2 wndSz, int adjustment)
@@ -265,7 +253,6 @@ void NewUserMenu::NewUserButtons()
 	ImGui::SetCursorPos(ImVec2((wndSz.x / 2) - 50, wndSz.y / 2 + 180));
 	if (ImGui::Button("Clear", ImVec2(110, 22)))
 	{
-		//ZeroMemory(this, sizeof(this));
 		ClearNewUserData();
 	}
 
@@ -306,23 +293,110 @@ void NewUserMenu::ClearNewUserData()
 
 
 
-/* This will handle saving data to a local program directory */
-/* so one can log in to the program in a local environment */
+/* This will handle saving data to a local program directory 
+ * so one can log in to the program in a local environment 
+ * if no internet is available. This also implies I will have
+ * all associated files for the player available locally as
+ * well. The option will eventually be provided to the user
+ * if they wish to store their plays locally and/or on the web.
+ */
 
 /*
+ * NOTE:
  * This function is meant to save data in an encrypted/hashed manner
  * that currently is not implemented. It will be implemented before
  * release of this tool because user data is treated as the most
  * important thing I should ever properly handle and I will always
  * see user data in this manner.
  */
+void NewUserMenu::SaveLocal(UserHandler* user)
+{
+	int fd;
+	char path[MAXBUFSZ];
+	struct stat dir;
+
+
+
+	// To handle directory existence stat will be used for now
+	// but will later be adjusted to avoid the time-of-check to 
+	// time-of-use bug (though I think this issue shouldn't be
+	// too pressing given the task this tool is being created
+	// for
+	memset(path, 0, sizeof(MAXBUFSZ));
+
+	if (getcwd(path, NULL))
+		printf("Current directory: %s\n", path);
+	else
+	{
+		fprintf(stderr, "Failed to obtain current directory\n");
+		exit(EXIT_FAILURE);
+	}
+
+	strcat(path, SAVEDIR);
+	if (stat(path, &dir) == 0 && S_ISDIR(dir.st_mode))
+	{
+		printf("Proceeding to save data...\n");
+	}
+	else
+	{
+		if (mkdir(path) == -1)
+		{
+			fprintf(stderr, "Failed to create directory at path '%s'!\n", path);
+			exit(EXIT_FAILURE);
+		}
+	}
+	chdir(path);
+	strcat(path, SAVEFILEWSEP);
+	
+	
+
+	//if( access(SAVEFILE, F_OK) == 0)
+
+	// Data: 3-30-22
+	// NOTE:
+	// In the future this will check for the existence of the file and 
+	// instead of rewriting over the old data will seek to the end and append
+	// the new data. For simplicity and just for single user scenarios and for
+	// the sake of getting the tool to an alpha/beta stage I have left this
+	// as the approach. I will adjust this before release to the public.
+	// TODO: Allow adding of data and not just rewriting over saved data.
+	fd = open(SAVEFILE, _O_BINARY | _O_RDWR | _O_CREAT, _S_IREAD | _S_IWRITE);
+	if (fd < 0)
+	{
+		perror("Error: ");
+		exit(EXIT_FAILURE);
+	}
+
+	
+	
+
+	// Check if directory exists
+
+
+	// append save file name to directory path
+	//strcat(path, "\\")
+
+	//fd = open()
+
+	
+
+
+
+	//fd = open()
+}
+
+// TODO: Isolate this function
 void NewUserMenu::SaveData()
 {
-	// TODO: Function incomplete 
-	char path[MAXBUFSZ];
-	memset(path, 0, sizeof(path));
-	if (getcwd(path, MAXBUFSZ))
-		printf("Directory path: %s\n", path);
+	// TODO: Function incomplete
+	// TODO: Add encryption
+	userData = new UserHandler();
+	userData->setFirstName(m_firstname);
+	userData->setLastName(m_lastname);
+	userData->setEmail(m_email);
+	userData->setUsername(m_username);
+	
+	SaveLocal(userData);
 }
 
 
@@ -470,7 +544,7 @@ void NewUserMenu::ValidateUsername()
   * check the validity of the provided email
   *
   * TODO: Create individual error handlers for each error and
-  * display that error to the user or them to fix
+  * display that error to the user for them to fix
   */
 void NewUserMenu::ValidateEmail()
 {
