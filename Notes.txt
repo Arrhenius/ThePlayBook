@@ -1,5 +1,6 @@
 This is a simple text file where I will display my thoughts on the design of the software,
-design ideas, and anything else I may come up with that I want to be in the software.
+design ideas, and anything else I may come up with that I want to be in the software. 
+Realistically I should rename this file to "blog.txt" but for now I'll keep it as is.
 
 
 Goal:
@@ -83,4 +84,22 @@ for originally. This pretty much confirmed to me that there is underlying C++ wo
 instances of classes.
 
 TL,DR; I don't know how C++ works yet.
+
+
+Date: 3-30-22
+
+It is safe to say that I have been busy and my ability to continue this project has been stalled
+a bit. Job interviews and preparation for them plus the inevitable feeling of imposter syndrome
+that I seem to always encounter when taking on something bigger than I'm used to always tends to
+find a way to discourage me in life from doing things that I should be able to do with ease.
+
+Due to the size of the project there appears to be certain things that I failed to think of
+before embarking on the journey of creating this tool. What appeared to be a simple program
+that I felt would be fairly straight forward was actually becoming a Herculean task quickly
+over the night. Things that seemed trivial before like file saving were becoming a much more
+complex task because the type of data and how I was to handle it was no longer trivial. That being
+said, my timeline for completion is unknown but am aiming to complete this within at least another
+month since I should find an opportunity here very soon to complete things. Other than that, there
+is really not much to say, things take time, I have none, so I'll work with what I got. Be patient 
+my friends, it is coming.
 
