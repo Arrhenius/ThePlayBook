@@ -47,13 +47,8 @@
       <UniqueIdentifier>{9f86ab4c-1f4f-4fca-a500-2eb4baf6dfa1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Handlers\FileSystemHandler">
-      <UniqueIdentifier>{7595c6c9-b753-4837-9090-027a0bbffbb0}</UniqueIdentifier>
+      <UniqueIdentifier>{6d5504fb-f7aa-44da-a6ae-219d8c876cee}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Design.txt">
-      <Filter>Notes</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imconfig.h">
@@ -110,6 +105,9 @@
     <ClInclude Include="PlayBookHandler.h">
       <Filter>Handlers\PlayBookHandler</Filter>
     </ClInclude>
+    <ClInclude Include="FileSystemHandler.h">
+      <Filter>Handlers\FileSystemHandler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.cpp">
@@ -163,6 +161,9 @@
     <ClCompile Include="LeftOutCode.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
+    <ClCompile Include="FileSystemHandler.cpp">
+      <Filter>Handlers\FileSystemHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_ancient_radar.dds">
@@ -201,5 +202,10 @@
     <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_vertigo_radar.dds">
       <Filter>Handlers\MapTextureHandlers\MapTextures</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes.txt">
+      <Filter>Notes</Filter>
+    </Text>
   </ItemGroup>
 </Project>

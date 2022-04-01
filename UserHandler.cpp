@@ -11,6 +11,7 @@ UserHandler::UserHandler()
 	m_lastname[0] = '\0';
 	m_username[0] = '\0';
 	m_email[0] = '\0';
+	m_playbook = NULL;
 }
 
 UserHandler::~UserHandler()

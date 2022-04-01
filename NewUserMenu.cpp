@@ -322,6 +322,8 @@ void NewUserMenu::SaveLocal(UserHandler* user)
 	// time-of-use bug (though I think this issue shouldn't be
 	// too pressing given the task this tool is being created
 	// for
+	// TODO: Create error logger to handle the endless mess that
+	// could potentially occur here
 	memset(path, 0, sizeof(MAXBUFSZ));
 
 	if (getcwd(path, NULL))
@@ -342,10 +344,15 @@ void NewUserMenu::SaveLocal(UserHandler* user)
 		if (mkdir(path) == -1)
 		{
 			fprintf(stderr, "Failed to create directory at path '%s'!\n", path);
+			perror("Error");
 			exit(EXIT_FAILURE);
 		}
 	}
-	chdir(path);
+	if (chdir(path) != 0)
+	{
+		perror("Directory change failed ");
+
+	}
 	strcat(path, SAVEFILEWSEP);
 	
 	
@@ -369,7 +376,7 @@ void NewUserMenu::SaveLocal(UserHandler* user)
 
 	
 	
-
+	write(fd, (void*)user, sizeof(UserHandler));
 	// Check if directory exists
 
 
