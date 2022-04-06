@@ -17,8 +17,11 @@
 // Solution found:
 // https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
 
-// Might adjust this to something else in the future but for now will be used
-#ifdef WIN32
+// Might adjust this to something else in the future but for now will be used.
+// Given that the entirety of this tool will be built within a windows environment
+// there should technically be no need for this. All of this will be considered
+// when refactoring of the tool is done
+#if defined(WIN32) || defined(_WIN32)
 #include <io.h>
 #define F_OK 0
 #define access _access
@@ -597,6 +600,12 @@ void NewUserMenu::ValidatePassword()
 		setErrorPassword(true);
 }
 
+
+// Eventually individual errors need to be set in order
+// to properly display the necessary corrections that are
+// needed in the new user menu.
+// TODO: Apply individual errors to the fields in the 
+// NewUserMenu
 bool NewUserMenu::CheckCompletion()
 {
 	if (getErrorFirstName() == true)
@@ -625,6 +634,7 @@ void NewUserMenu::ValidateData()
 	// Verifies all data is acceptable by checking error status for
 	// each individual check. If any errors return true it is assumed
 	// the form is incomplete
+	// TODO: Add a popup to fix displayed errors
 	setIsFormComplete(CheckCompletion());
 
 }
