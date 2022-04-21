@@ -36,9 +36,6 @@
 #endif
 
 
-
-
-
 void LocalDataSave(UserHandler* user)
 {
 	int fd;
