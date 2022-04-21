@@ -7,7 +7,7 @@
 #include <tchar.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "WindowHandler.h"
+#include "Handlers/WindowHandler/WindowHandler.h"
 #include "Handlers/WindowHandler/Menus/Headers/LoginMenu.h"
 #include "Handlers/WindowHandler/Menus/Headers/MainBarMenu.h"
 #include <D3dx9tex.h>

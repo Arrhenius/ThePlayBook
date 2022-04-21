@@ -6,10 +6,10 @@
 #include "../../../imgui/imgui.h"
 #include <stdio.h>
 #include <sys/types.h>
-<<<<<<< HEAD:Handlers/WindowHandler/Menus/NewUserMenu.cpp
+
 #include "Validators/Validator.h"
 #include "../../DataHandler/DataHandler.h"
-=======
+
 
 
 // Solution found:
@@ -45,7 +45,7 @@
 
 
 
->>>>>>> c1d61bad5fb6c4f319e67ec163940de7aec89bfb:NewUserMenu.cpp
+
 
 
 
@@ -453,14 +453,11 @@ void NewUserMenu::ValidateData()
 	ValidateUsername();
 	ValidateEmail();
 	ValidatePassword();
-<<<<<<< HEAD:Handlers/WindowHandler/Menus/NewUserMenu.cpp
-=======
 
 	// Verifies all data is acceptable by checking error status for
 	// each individual check. If any errors return true it is assumed
 	// the form is incomplete
 	// TODO: Add a popup to fix displayed errors
->>>>>>> c1d61bad5fb6c4f319e67ec163940de7aec89bfb:NewUserMenu.cpp
 	setIsFormComplete(CheckCompletion());
 
 }
