@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../../../../Helper.h"
+#include "../../../../imgui/imgui.h"
 
-#include "Helper.h"
-#include "imgui/imgui.h"
 
 
 class MainWindow

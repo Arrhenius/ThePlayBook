@@ -1,8 +1,7 @@
 #ifndef MAINBARMENU_H
 #define MAINBARMENU_H
 
-
-#include "Helper.h"
+#include "../../../../Helper.h"
 
 
 class MainBarMenu
