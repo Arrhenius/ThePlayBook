@@ -1,7 +1,8 @@
 #ifndef DATAHANDLER_H
 #define DATAHANDLER_H
 
-#include "UserHandler.h"
+
+#include "../UserHandler/UserHandler.h"
 
 #define SAVEDIR			"\\Local"
 #define SAVEFILEWSEP	"\\local.dat"
