@@ -8,10 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "WindowHandler.h"
-#include "LoginMenu.h"
-#include "MainBarMenu.h"
+#include "Handlers/WindowHandler/Menus/Headers/LoginMenu.h"
+#include "Handlers/WindowHandler/Menus/Headers/MainBarMenu.h"
 #include <D3dx9tex.h>
-#include "MapTextureHandler.h"
+#include "Handlers/MapTextureHandlers/MapTextureHandler.h"
 #pragma comment(lib, "D3dx9")
 #pragma comment(lib, "d3d9.lib")
 

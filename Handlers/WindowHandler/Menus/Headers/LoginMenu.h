@@ -30,7 +30,7 @@ private:
 	bool		m_loading;
 	char		m_label[MAXLABELSZ];
 	char		m_username[MAXNAMESZ];
-	char		m_password[MAXPWSZ];
+	char		m_password[MAXKEYSZ];
 
 };
 

@@ -2,8 +2,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "imgui/imgui.h"
-#include "LoginMenu.h"
+#include "../../../imgui/imgui.h"
+#include "Headers/LoginMenu.h"
 
 
 

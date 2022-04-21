@@ -44,6 +44,11 @@ char* UserHandler::getLastName()
 	return m_lastname;
 }
 
+char* UserHandler::getKey()
+{
+	return m_key;
+}
+
 void UserHandler::setUsername(const char* username)
 {
 	if (*username)
@@ -74,4 +79,12 @@ void UserHandler::setEmail(const char* email)
 		strcpy(m_username, email);
 	else
 		m_username[0] = '\0';
+}
+
+void UserHandler::setKey(const char* key)
+{
+	if (*key)
+		strcpy(m_key, key);
+	else
+		m_key[0] = '\0';
 }

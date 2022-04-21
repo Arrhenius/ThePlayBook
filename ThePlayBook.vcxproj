@@ -154,17 +154,18 @@
     <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_rectpack.h" />
     <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_textedit.h" />
     <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_truetype.h" />
-    <ClInclude Include="FileSystemHandler.h" />
+    <ClInclude Include="Handlers\DataHandler\DataHandler.h" />
+    <ClInclude Include="Handlers\MapTextureHandlers\MapTextureHandler.h" />
+    <ClInclude Include="Handlers\PlayBookHandler\PlayBookHandler.h" />
+    <ClInclude Include="Handlers\UserHandler\UserHandler.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\LoginMenu.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\MainBarMenu.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\MainWindow.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\NewUserMenu.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\ToolMenu.h" />
+    <ClInclude Include="Handlers\WindowHandler\Menus\Validators\Validator.h" />
+    <ClInclude Include="Handlers\WindowHandler\WindowHandler.h" />
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="LoginMenu.h" />
-    <ClInclude Include="MainBarMenu.h" />
-    <ClInclude Include="MainWindow.h" />
-    <ClInclude Include="MapTextureHandler.h" />
-    <ClInclude Include="NewUserMenu.h" />
-    <ClInclude Include="PlayBookHandler.h" />
-    <ClInclude Include="ToolMenu.h" />
-    <ClInclude Include="UserHandler.h" />
-    <ClInclude Include="WindowHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.cpp" />
@@ -174,17 +175,18 @@
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_win32.cpp" />
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_widgets.cpp" />
-    <ClCompile Include="FileSystemHandler.cpp" />
+    <ClCompile Include="Handlers\DataHandler\DataHandler.cpp" />
+    <ClCompile Include="Handlers\MapTextureHandlers\MapTextureHandler.cpp" />
+    <ClCompile Include="Handlers\UserHandler\UserHandler.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\LoginMenu.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\MainBarMenu.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\MainWindow.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\NewUserMenu.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\ToolMenu.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\Menus\Validators\Validator.cpp" />
+    <ClCompile Include="Handlers\WindowHandler\WindowHandler.cpp" />
     <ClCompile Include="LeftOutCode.cpp" />
-    <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainBarMenu.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="MapTextureHandler.cpp" />
-    <ClCompile Include="NewUserMenu.cpp" />
-    <ClCompile Include="ToolMenu.cpp" />
-    <ClCompile Include="UserHandler.cpp" />
-    <ClCompile Include="WindowHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\Jetfo\Desktop\CSGOMaps\DDSFiles\de_ancient_radar.dds" />

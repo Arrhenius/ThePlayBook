@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "MainBarMenu.h"
-#include "imgui/imgui.h"
+
+#include "../../../imgui/imgui.h"
+#include "Headers/MainBarMenu.h"
 
 
 

@@ -46,8 +46,11 @@
     <Filter Include="Misc">
       <UniqueIdentifier>{9f86ab4c-1f4f-4fca-a500-2eb4baf6dfa1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Handlers\FileSystemHandler">
-      <UniqueIdentifier>{6d5504fb-f7aa-44da-a6ae-219d8c876cee}</UniqueIdentifier>
+    <Filter Include="Handlers\WindowHandler\Menus\Validators">
+      <UniqueIdentifier>{7c5db381-ee51-475d-9a25-9581d569da7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Handlers\DataHandler">
+      <UniqueIdentifier>{da4a371f-016c-4864-aea6-d30ba06d5835}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,38 +78,41 @@
     <ClInclude Include="..\..\..\..\ClonedRepos\New folder (2)\imstb_truetype.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="WindowHandler.h">
-      <Filter>Handlers\WindowHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="MapTextureHandler.h">
-      <Filter>Handlers\MapTextureHandlers</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginMenu.h">
-      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="NewUserMenu.h">
-      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ToolMenu.h">
-      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="MainBarMenu.h">
-      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainWindow.h">
-      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="UserHandler.h">
+    <ClInclude Include="Handlers\UserHandler\UserHandler.h">
       <Filter>Handlers\UserHandler</Filter>
     </ClInclude>
-    <ClInclude Include="PlayBookHandler.h">
+    <ClInclude Include="Handlers\PlayBookHandler\PlayBookHandler.h">
       <Filter>Handlers\PlayBookHandler</Filter>
     </ClInclude>
-    <ClInclude Include="FileSystemHandler.h">
-      <Filter>Handlers\FileSystemHandler</Filter>
+    <ClInclude Include="Handlers\MapTextureHandlers\MapTextureHandler.h">
+      <Filter>Handlers\MapTextureHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\LoginMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\MainBarMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\MainWindow.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\NewUserMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Headers\ToolMenu.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\Menus\Validators\Validator.h">
+      <Filter>Handlers\WindowHandler\Menus\Validators</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\DataHandler\DataHandler.h">
+      <Filter>Handlers\DataHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="Handlers\WindowHandler\WindowHandler.h">
+      <Filter>Handlers\WindowHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,35 +140,38 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowHandler.cpp">
-      <Filter>Handlers\WindowHandler</Filter>
-    </ClCompile>
-    <ClCompile Include="MapTextureHandler.cpp">
-      <Filter>Handlers\MapTextureHandlers</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginMenu.cpp">
-      <Filter>Handlers\WindowHandler\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="NewUserMenu.cpp">
-      <Filter>Handlers\WindowHandler\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="ToolMenu.cpp">
-      <Filter>Handlers\WindowHandler\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="MainBarMenu.cpp">
-      <Filter>Handlers\WindowHandler\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Handlers\WindowHandler\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="UserHandler.cpp">
-      <Filter>Handlers\UserHandler</Filter>
-    </ClCompile>
     <ClCompile Include="LeftOutCode.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
-    <ClCompile Include="FileSystemHandler.cpp">
-      <Filter>Handlers\FileSystemHandler</Filter>
+    <ClCompile Include="Handlers\WindowHandler\Menus\LoginMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\Menus\MainBarMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\Menus\MainWindow.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\Menus\NewUserMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\Menus\ToolMenu.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\UserHandler\UserHandler.cpp">
+      <Filter>Handlers\UserHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\MapTextureHandlers\MapTextureHandler.cpp">
+      <Filter>Handlers\MapTextureHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\Menus\Validators\Validator.cpp">
+      <Filter>Handlers\WindowHandler\Menus\Validators</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\DataHandler\DataHandler.cpp">
+      <Filter>Handlers\DataHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="Handlers\WindowHandler\WindowHandler.cpp">
+      <Filter>Handlers\WindowHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

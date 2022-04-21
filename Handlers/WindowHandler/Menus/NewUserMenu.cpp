@@ -2,48 +2,12 @@
 #define _CRT_NONSTDC_NO_DEPRECATE
 
 
-
-
-#include "NewUserMenu.h"
-#include "imgui/imgui.h"
+#include "Headers/NewUserMenu.h"
+#include "../../../imgui/imgui.h"
 #include <stdio.h>
-#include <ctype.h>
-#include <direct.h>
-#include <regex>
-#include <fcntl.h>
 #include <sys/types.h>
-
-
-// Solution found:
-// https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
-
-// Might adjust this to something else in the future but for now will be used
-#ifdef WIN32
-#include <io.h>
-#define F_OK 0
-#define access _access
-#endif
-
-
-// Obtained from:
-// https://stackoverflow.com/questions/11238918/s-isreg-macro-undefined
-
-// Windows does not define the S_ISREG and S_ISDIR macros in stat.h, so we do.
-// We have to define _CRT_INTERNAL_NONSTDC_NAMES 1 before #including sys/stat.h
-// in order for Microsoft's stat.h to define names like S_IFMT, S_IFREG, and S_IFDIR,
-// rather than just defining  _S_IFMT, _S_IFREG, and _S_IFDIR as it normally does.
-#define _CRT_INTERNAL_NONSTDC_NAMES 1
-#include <sys/stat.h>
-#if !defined(S_ISREG) && defined(S_IFMT) && defined(S_IFREG)
-#define S_ISREG(m) (((m) & S_IFMT) == S_IFREG)
-#endif
-#if !defined(S_ISDIR) && defined(S_IFMT) && defined(S_IFDIR)
-#define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
-#endif
-
-
-
-
+#include "Validators/Validator.h"
+#include "../../DataHandler/DataHandler.h"
 
 
 
@@ -292,6 +256,19 @@ void NewUserMenu::ClearNewUserData()
 }
 
 
+// TODO: Isolate this function
+void NewUserMenu::SaveData()
+{
+	// TODO: Function incomplete, add encryption
+	userData = new UserHandler();
+	userData->setFirstName(m_firstname);
+	userData->setLastName(m_lastname);
+	userData->setEmail(m_email);
+	userData->setUsername(m_username);
+	userData->setKey(m_password);
+	SaveLocal(userData);
+}
+
 
 /* This will handle saving data to a local program directory 
  * so one can log in to the program in a local environment 
@@ -311,103 +288,8 @@ void NewUserMenu::ClearNewUserData()
  */
 void NewUserMenu::SaveLocal(UserHandler* user)
 {
-	int fd;
-	char path[MAXBUFSZ];
-	struct stat dir;
-
-
-
-	// To handle directory existence stat will be used for now
-	// but will later be adjusted to avoid the time-of-check to 
-	// time-of-use bug (though I think this issue shouldn't be
-	// too pressing given the task this tool is being created
-	// for
-	// TODO: Create error logger to handle the endless mess that
-	// could potentially occur here
-	memset(path, 0, sizeof(MAXBUFSZ));
-
-	if (getcwd(path, NULL))
-		printf("Current directory: %s\n", path);
-	else
-	{
-		fprintf(stderr, "Failed to obtain current directory\n");
-		exit(EXIT_FAILURE);
-	}
-
-	strcat(path, SAVEDIR);
-	if (stat(path, &dir) == 0 && S_ISDIR(dir.st_mode))
-	{
-		printf("Proceeding to save data...\n");
-	}
-	else
-	{
-		if (mkdir(path) == -1)
-		{
-			fprintf(stderr, "Failed to create directory at path '%s'!\n", path);
-			perror("Error");
-			exit(EXIT_FAILURE);
-		}
-	}
-	if (chdir(path) != 0)
-	{
-		perror("Directory change failed ");
-
-	}
-	strcat(path, SAVEFILEWSEP);
-	
-	
-
-	//if( access(SAVEFILE, F_OK) == 0)
-
-	// Data: 3-30-22
-	// NOTE:
-	// In the future this will check for the existence of the file and 
-	// instead of rewriting over the old data will seek to the end and append
-	// the new data. For simplicity and just for single user scenarios and for
-	// the sake of getting the tool to an alpha/beta stage I have left this
-	// as the approach. I will adjust this before release to the public.
-	// TODO: Allow adding of data and not just rewriting over saved data.
-	fd = open(SAVEFILE, _O_BINARY | _O_RDWR | _O_CREAT, _S_IREAD | _S_IWRITE);
-	if (fd < 0)
-	{
-		perror("Error: ");
-		exit(EXIT_FAILURE);
-	}
-
-	
-	
-	write(fd, (void*)user, sizeof(UserHandler));
-	// Check if directory exists
-
-
-	// append save file name to directory path
-	//strcat(path, "\\")
-
-	//fd = open()
-
-	
-
-
-
-	//fd = open()
+	LocalDataSave(user);
 }
-
-// TODO: Isolate this function
-void NewUserMenu::SaveData()
-{
-	// TODO: Function incomplete
-	// TODO: Add encryption
-	userData = new UserHandler();
-	userData->setFirstName(m_firstname);
-	userData->setLastName(m_lastname);
-	userData->setEmail(m_email);
-	userData->setUsername(m_username);
-	
-	SaveLocal(userData);
-}
-
-
-
 
 
 bool NewUserMenu::getErrorFirstName()
@@ -474,127 +356,31 @@ void NewUserMenu::setIsFormComplete(bool status)
 
 void NewUserMenu::ValidateFirstName()
 {
-	char* p;
-	p = m_firstname;
-	if (*p == '\n' || *p == '\0')
-	{
-		setErrorFirstName(true);
-		return;
-	}
-	while (*p)
-	{
-		if (isalpha(*p) == 0)
-		{
-			setErrorFirstName(true);
-			return;
-		}
-		p++;
-	}
-	setErrorFirstName(false);
+	setErrorFirstName(FirstNameValidator(m_firstname));
 }
 
 void NewUserMenu::ValidateLastName()
 {
-	char* p;
-	p = m_lastname;
-	if (*p == '\n' || *p == '\0')
-	{
-		setErrorLastName(true);
-		return;
-	}
-	while (*p)
-	{
-		if (isalpha(*p) == 0)
-		{
-			setErrorLastName(true);
-			return;
-		}
-		p++;
-	}
-	setErrorLastName(false);
+	setErrorLastName(LastNameValidator(m_lastname));
 }
 
 void NewUserMenu::ValidateUsername()
 {
-	char* p;
-	p = m_username;
-	if (*p == '\n' || *p == '\0')
-	{
-		setErrorUsername(true);
-		return;
-	}
-	while (*p)
-	{
-		if (isalnum(*p) == 0)
-		{
-			setErrorUsername(true);
-			return;
-		}
-		p++;
-	}
-	setErrorUsername(false);
+	setErrorUsername(UsernameValidator(m_username));
 }
 
-
-/* Email validation is something I need to work on, for now I
- * am using this regex expression I located online. The reliability
- * of this method is still questionable but for now this is
- * what I will be using until something seriously breaks
- *
- * const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
- *
- */
-
-
- /*
-  * This function will perform a variety of email checks to
-  * check the validity of the provided email
-  *
-  * TODO: Create individual error handlers for each error and
-  * display that error to the user for them to fix
-  */
 void NewUserMenu::ValidateEmail()
 {
-	char* p = m_email;
-	if (*p == '\n' || *p == '\0')
-	{
-		setErrorEmail(true);
-		return;
-	}
-	if (std::regex_match(m_email, std::regex("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+")))
-		setErrorEmail(false);
-	else
-		setErrorEmail(true);
-
-	if (strcmp(m_email, m_cmpemail) == 0)
-		setErrorEmail(false);
-	else
-		setErrorEmail(true);
+	setErrorEmail(EmailValidator(m_email, m_cmpemail));
 }
-
-
 
 /*
  * Checks to see if passwords entered match and verifies if
  * the password is of a correct length.
  */
-
 void NewUserMenu::ValidatePassword()
 {
-	if (m_password[0] == '\n' || m_password[0] == '\0' ||
-		m_cmppw[0] == '\n' || m_cmppw[0] == '\0')
-	{
-		setErrorPassword(true);
-		return;
-	}
-	if (strcmp(m_password, m_cmppw) == 0)
-		setErrorPassword(false);
-	else
-		setErrorPassword(true);
-	if (strlen(m_password) >= 8)
-		setErrorPassword(false);
-	else
-		setErrorPassword(true);
+	setErrorPassword(KeysValidator(m_password, m_cmppw));
 }
 
 bool NewUserMenu::CheckCompletion()
@@ -613,7 +399,9 @@ bool NewUserMenu::CheckCompletion()
 		return true;
 }
 
-
+// Verifies all data is acceptable by checking error status for
+// each individual check. If any errors return true it is assumed
+// the form is incomplete
 void NewUserMenu::ValidateData()
 {
 	ValidateFirstName();
@@ -621,16 +409,9 @@ void NewUserMenu::ValidateData()
 	ValidateUsername();
 	ValidateEmail();
 	ValidatePassword();
-
-	// Verifies all data is acceptable by checking error status for
-	// each individual check. If any errors return true it is assumed
-	// the form is incomplete
 	setIsFormComplete(CheckCompletion());
 
 }
-
-
-
 
 
 // This is the main function call to render the

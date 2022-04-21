@@ -1,9 +1,10 @@
 #ifndef WINDOWHANDLER_H
 #define WINDOWHANDLER_H
-#include "imgui/imgui.h"
 
-#include "NewUserMenu.h"
-#include "MainWindow.h"
+#include "../../imgui/imgui.h"
+#include "Menus/Headers/NewUserMenu.h"
+#include "Menus/Headers/MainWindow.h"
+
 
 #define _CRT_SECURE_NO_WARNINGS
 

@@ -2,8 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "MainWindow.h"
-//#include "imgui/imgui.h"
+#include "Headers/MainWindow.h"
+#include "../../../imgui/imgui.h"
+
 
 MainWindow::MainWindow()
 {

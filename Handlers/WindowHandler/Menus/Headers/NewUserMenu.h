@@ -2,17 +2,13 @@
 #define NEWUSERMENU_H
 
 
-#include "Helper.h"
-#include "UserHandler.h"
-
-#define SAVEDIR			"\\Local"
-#define SAVEFILEWSEP	"\\local.dat"
-#define SAVEFILE		"local.dat"
+#include "../../../../Helper.h"
+#include "../../../UserHandler/UserHandler.h"
 
 
-// TODO: Abstract this class with another class or namespace
+// TODO: Abstract this class with other classes or namespaces
 // Current class design is a bit bloated and can probably
-// be simplified significantly
+// be simplified rather significantly
 class NewUserMenu
 {
 public:
@@ -109,8 +105,8 @@ private:
 	// backend. For now while under development I have left it like this but
 	// will be adjusted as development continues...as soon as I figure out
 	// what is the best way to handle this in regards to the security of the field
-	char	m_password[MAXPWSZ];
-	char	m_cmppw[MAXPWSZ];
+	char	m_password[MAXKEYSZ];
+	char	m_cmppw[MAXKEYSZ];
 
 	// This will be the data that will be copied to a UserHandler object
 	// Program will automatically clear data from memory once transferred
