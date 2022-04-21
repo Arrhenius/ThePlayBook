@@ -6,8 +6,46 @@
 #include "../../../imgui/imgui.h"
 #include <stdio.h>
 #include <sys/types.h>
+<<<<<<< HEAD:Handlers/WindowHandler/Menus/NewUserMenu.cpp
 #include "Validators/Validator.h"
 #include "../../DataHandler/DataHandler.h"
+=======
+
+
+// Solution found:
+// https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
+
+// Might adjust this to something else in the future but for now will be used.
+// Given that the entirety of this tool will be built within a windows environment
+// there should technically be no need for this. All of this will be considered
+// when refactoring of the tool is done
+#if defined(WIN32) || defined(_WIN32)
+#include <io.h>
+#define F_OK 0
+#define access _access
+#endif
+
+
+// Obtained from:
+// https://stackoverflow.com/questions/11238918/s-isreg-macro-undefined
+
+// Windows does not define the S_ISREG and S_ISDIR macros in stat.h, so we do.
+// We have to define _CRT_INTERNAL_NONSTDC_NAMES 1 before #including sys/stat.h
+// in order for Microsoft's stat.h to define names like S_IFMT, S_IFREG, and S_IFDIR,
+// rather than just defining  _S_IFMT, _S_IFREG, and _S_IFDIR as it normally does.
+#define _CRT_INTERNAL_NONSTDC_NAMES 1
+#include <sys/stat.h>
+#if !defined(S_ISREG) && defined(S_IFMT) && defined(S_IFREG)
+#define S_ISREG(m) (((m) & S_IFMT) == S_IFREG)
+#endif
+#if !defined(S_ISDIR) && defined(S_IFMT) && defined(S_IFDIR)
+#define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
+#endif
+
+
+
+
+>>>>>>> c1d61bad5fb6c4f319e67ec163940de7aec89bfb:NewUserMenu.cpp
 
 
 
@@ -383,6 +421,12 @@ void NewUserMenu::ValidatePassword()
 	setErrorPassword(KeysValidator(m_password, m_cmppw));
 }
 
+
+// Eventually individual errors need to be set in order
+// to properly display the necessary corrections that are
+// needed in the new user menu.
+// TODO: Apply individual errors to the fields in the 
+// NewUserMenu
 bool NewUserMenu::CheckCompletion()
 {
 	if (getErrorFirstName() == true)
@@ -409,6 +453,14 @@ void NewUserMenu::ValidateData()
 	ValidateUsername();
 	ValidateEmail();
 	ValidatePassword();
+<<<<<<< HEAD:Handlers/WindowHandler/Menus/NewUserMenu.cpp
+=======
+
+	// Verifies all data is acceptable by checking error status for
+	// each individual check. If any errors return true it is assumed
+	// the form is incomplete
+	// TODO: Add a popup to fix displayed errors
+>>>>>>> c1d61bad5fb6c4f319e67ec163940de7aec89bfb:NewUserMenu.cpp
 	setIsFormComplete(CheckCompletion());
 
 }
