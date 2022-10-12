@@ -32,6 +32,8 @@ private:
 class PlayBookHandler
 {
 public:
+	PlayBookHandler();
+	~PlayBookHandler();
 private:
 	std::vector<Strat> stratLibrary;
 };

@@ -68,6 +68,7 @@ void LocalDataSave(UserHandler* user)
 	strcat(path, SAVEDIR);
 	if (stat(path, &dir) == 0 && S_ISDIR(dir.st_mode))
 	{
+		printf("Directory '%s' found!\n", SAVEDIR);
 		printf("Proceeding to save data...\n");
 	}
 	else

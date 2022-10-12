@@ -269,6 +269,8 @@ void NewUserMenu::SaveData()
 	userData->setUsername(m_username);
 	userData->setKey(m_password);
 	SaveLocal(userData);
+	delete userData;
+	
 }
 
 

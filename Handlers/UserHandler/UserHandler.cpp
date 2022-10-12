@@ -6,7 +6,12 @@
 
 UserHandler::UserHandler()
 {
-	memset(this, 0, sizeof(this));
+	//memset(this, 0, sizeof(this));
+	memset(m_firstname, 0, sizeof(m_firstname));
+	memset(m_lastname, 0, sizeof(m_lastname));
+	memset(m_username, 0, sizeof(m_username));
+	memset(m_email, 0, sizeof(m_email));
+
 	m_firstname[0] = '\0';
 	m_lastname[0] = '\0';
 	m_username[0] = '\0';
@@ -16,7 +21,13 @@ UserHandler::UserHandler()
 
 UserHandler::~UserHandler()
 {
-	memset(this, 0, sizeof(this));
+	//memset(this, 0, sizeof(this));
+	memset(m_firstname, 0, sizeof(m_firstname));
+	memset(m_lastname, 0, sizeof(m_lastname));
+	memset(m_username, 0, sizeof(m_username));
+	memset(m_email, 0, sizeof(m_email));
+	//m_playbook->~PlayBookHandler();
+	
 }
 
 PlayBookHandler* UserHandler::getPlayBook()

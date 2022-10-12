@@ -1,21 +1,28 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+/*
+ * The headers are completely broken because visual studio
+ * is clueless when it comes to handling folders. And file
+ * structure of a program. Will Fix when properly releasing.
+ */
+
 #include "../../../../Helper.h"
 #include "../../../../imgui/imgui.h"
+#include "../../../../BaseWindow.h"
 
 
 
-class MainWindow
+class MainWindow : public BaseWindow
 {
 public:
 	MainWindow();
 	~MainWindow();
 
 	// getters
-	int		getWidth();
-	int		getHeight();
-	char* getLabel();
+	//int		getWidth();
+	//int		getHeight();
+	//char*	getLabel();
 
 	// setters
 	void	setWidth(int width);
@@ -32,7 +39,7 @@ private:
 	int		m_width;
 	int		m_height;
 	bool	m_active;
-	char	m_label[MAXLABELSZ];
+	//char	m_label[MAXLABELSZ];
 
 };
 

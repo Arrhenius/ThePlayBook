@@ -1,34 +1,33 @@
 #ifndef LOGINMENU_H
 #define LOGINMENU_H
 
-#include "../../../../Helper.h"
+#include "../../../../BaseWindow.h"
 
 
-class LoginMenu
+class LoginMenu : public BaseWindow
 {
 public:
 	LoginMenu();
 	~LoginMenu();
 
 
-	// UI prototypes
+	
 	void		Render();
-	void		Disable();
-	void		Enable();
-
-
 	void		EnableLoading();
 	void		DisableLoading();
-	bool		getIsActive();
-	int			getHeight();
-	int			getWidth();
 	bool		getLoading();
 private:
-	int			m_width;
-	int			m_height;
-	bool		m_active;
+
+	void		LoginMenuForm();
+	void		LoginMenuButtons();
+	void		LoginButton();
+	void		CreateAccountButton();
+	void		ForgotPasswordButton();
+	void		handlePasswordField(ImVec2 wndSz, int adjustment);
+	void		handleUsernameField(ImVec2 wndSz, int adjustment);
+
+
 	bool		m_loading;
-	char		m_label[MAXLABELSZ];
 	char		m_username[MAXNAMESZ];
 	char		m_password[MAXKEYSZ];
 

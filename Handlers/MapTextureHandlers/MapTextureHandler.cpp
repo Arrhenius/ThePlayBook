@@ -297,19 +297,6 @@ MapTexture MapTextureHandler::getMapTexture(int flag)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /********************TESTING************************/
 void MapTexture::Render()
 {
@@ -356,7 +343,7 @@ void MapTexture::Render()
 		const ImVec2 mouse_pos_in_canvas(io.MousePos.x - origin.x, io.MousePos.y - origin.y);
 
 
-		//draw_list->AddCircleFilled(ImVec2(p.x + 50, p.y + 50), 30.0f, IM_COL32(255, 0, 0, 255), 16);
+		draw_list->AddCircleFilled(ImVec2(p.x + 50, p.y + 50), 30.0f, IM_COL32(255, 0, 0, 255), 16);
 		// Draw a 3 pixel thick yellow line
 		draw_list->AddLine(ImVec2(p.x, p.y), ImVec2(p.x + 100.0f, p.y + 100.0f), IM_COL32(255, 255, 0, 255), 3.0f);
 		// Advance the ImGui cursor to claim space in the window (otherwise the window will appears small and needs to be resized)
@@ -402,7 +389,7 @@ void MapTexture::Render()
 		}
 
 		// Draw grid + all lines in the canvas
-		//ccccccccdraw_list->PushClipRect(canvas_p0, canvas_p1, true);
+		//draw_list->PushClipRect(canvas_p0, canvas_p1, true);
 #if 0
 		if (opt_enable_grid)
 		{

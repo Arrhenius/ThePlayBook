@@ -30,10 +30,10 @@ public:
 	void	setHeight(int height);
 	void	setWidth(int width);
 	void	setLabel(const char* label);
-	void	setFirstName(const char* firstname);
-	void	setLastName(const char* lastname);
-	void	setUserName(const char* username);
-	void	setEmail(const char* email);
+	//void	setFirstName(const char* firstname);
+	//void	setLastName(const char* lastname);
+	//void	setUserName(const char* username);
+	//void	setEmail(const char* email);
 
 private:
 	// Internal functions that are only called while render function is enabled.
@@ -108,8 +108,8 @@ private:
 	char	m_password[MAXKEYSZ];
 	char	m_cmppw[MAXKEYSZ];
 
-	// This will be the data that will be copied to a UserHandler object
-	// Program will automatically clear data from memory once transferred
+	// This will temporarily hold data before it is saved locally. This will
+	// immediately be wiped from memory upon save.
 	UserHandler* userData;
 };
 

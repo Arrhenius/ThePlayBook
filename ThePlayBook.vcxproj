@@ -166,6 +166,7 @@
     <ClInclude Include="Handlers\WindowHandler\Menus\Validators\Validator.h" />
     <ClInclude Include="Handlers\WindowHandler\WindowHandler.h" />
     <ClInclude Include="Helper.h" />
+    <ClInclude Include="BaseWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_impl_win32.cpp" />
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui_widgets.cpp" />
+    <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Handlers\DataHandler\DataHandler.cpp" />
     <ClCompile Include="Handlers\MapTextureHandlers\MapTextureHandler.cpp" />
     <ClCompile Include="Handlers\UserHandler\UserHandler.cpp" />

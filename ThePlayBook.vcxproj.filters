@@ -114,6 +114,9 @@
     <ClInclude Include="Handlers\WindowHandler\WindowHandler.h">
       <Filter>Handlers\WindowHandler</Filter>
     </ClInclude>
+    <ClInclude Include="BaseWindow.h">
+      <Filter>Handlers\WindowHandler\Menus\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ClonedRepos\New folder (2)\imgui.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="Handlers\WindowHandler\WindowHandler.cpp">
       <Filter>Handlers\WindowHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWindow.cpp">
+      <Filter>Handlers\WindowHandler\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
