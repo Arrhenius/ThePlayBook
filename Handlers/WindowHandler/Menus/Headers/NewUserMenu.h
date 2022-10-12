@@ -2,14 +2,27 @@
 #define NEWUSERMENU_H
 
 
+/*
+* NOTE:
+* 
+* Visual Studio royally screws up the file structure of projects
+* when you create new folders and files. For some reason it always
+* stores it at the root of the directory and never actually adds
+* files or folders where you place them. For now this messy approach
+* to including files will remain until I take the time to do it all
+* by hand and fix it within file explorer. I'm avoiding that now
+* to not lose focus on the main task
+*/ 
+
 #include "../../../../Helper.h"
 #include "../../../UserHandler/UserHandler.h"
+#include "../../../../BaseWindow.h"
 
 
 // TODO: Abstract this class with other classes or namespaces
 // Current class design is a bit bloated and can probably
 // be simplified rather significantly
-class NewUserMenu
+class NewUserMenu : public BaseWindow
 {
 public:
 	NewUserMenu();
@@ -17,14 +30,12 @@ public:
 
 	// UI handlers
 	void	Render();
-	void	Disable();
-	void	Enable();
 
 	// Getters
-	int		getHeight();
-	int		getWidth();
-	bool	getIsActive();
-	char*	getLabel();
+	//int		getHeight();
+	//int		getWidth();
+	//bool	getIsActive();
+	//char*	getLabel();
 
 	// Setters
 	void	setHeight(int height);
@@ -79,9 +90,7 @@ private:
 	void	SaveLocal(UserHandler* user);
 
 	// ******************** class members ****************************
-	int		m_height;
-	int		m_width;
-	bool	m_active;
+
 	bool	m_formcomplete;
 
 	// TODO: Turn these into bit flags instead in the future
@@ -93,7 +102,6 @@ private:
 	bool	m_errorPassword;
 
 	// Data
-	char	m_label[MAXLABELSZ];
 	char	m_firstname[MAXNAMESZ];
 	char	m_lastname[MAXNAMESZ];
 	char	m_username[MAXNAMESZ];
