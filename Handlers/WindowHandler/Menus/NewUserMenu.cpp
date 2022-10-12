@@ -16,9 +16,9 @@
 NewUserMenu::NewUserMenu()
 {
 
-	m_height = 0;
-	m_width = 0;
-	m_active = false;
+	//m_height = 0;
+	//m_width = 0;
+	//m_active = false;
 	m_formcomplete = false;
 
 	m_errorFirstName = false;
@@ -27,7 +27,7 @@ NewUserMenu::NewUserMenu()
 	m_errorEmail = false;
 	m_errorPassword = false;
 
-	memset(m_label, 0, sizeof(m_label));
+	//memset(m_label, 0, sizeof(m_label));
 	memset(m_firstname, 0, sizeof(m_firstname));
 	memset(m_lastname, 0, sizeof(m_lastname));
 	memset(m_username, 0, sizeof(m_username));
@@ -36,7 +36,7 @@ NewUserMenu::NewUserMenu()
 	memset(m_password, 0, sizeof(m_password));
 	memset(m_cmppw, 0, sizeof(m_cmppw));
 
-	strcpy(m_label, "New User");
+	//strcpy(m_label, "New User");
 	m_firstname[0] = '\0';
 	m_lastname[0] = '\0';
 	m_username[0] = '\0';
@@ -439,7 +439,7 @@ void NewUserMenu::Render()
 		return;
 	//ImGui::SetNextWindowSize()
 
-	if (ImGui::Begin(m_label, 0, 0))
+	if (ImGui::Begin(getLabel(), 0, 0))
 	{
 		NewUserForm();
 		NewUserButtons();
@@ -447,6 +447,8 @@ void NewUserMenu::Render()
 	ImGui::End();
 
 }
+
+#if 0
 
 void NewUserMenu::Enable()
 {
@@ -472,3 +474,6 @@ bool NewUserMenu::getIsActive()
 {
 	return m_active;
 }
+
+
+#endif
