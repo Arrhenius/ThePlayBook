@@ -3,7 +3,7 @@
 
 /*
  * The headers are completely broken because visual studio
- * is clueless when it comes to handling folders. And file
+ * is clueless when it comes to handling folders and file
  * structure of a program. Will Fix when properly releasing.
  */
 
@@ -19,26 +19,28 @@ public:
 	MainWindow();
 	~MainWindow();
 
+	void Render();
+
 	// getters
 	//int		getWidth();
 	//int		getHeight();
 	//char*	getLabel();
 
 	// setters
-	void	setWidth(int width);
-	void	setHeight(int height);
-	void	setLabel(char* label);
+	//void	setWidth(int width);
+	//void	setHeight(int height);
+	//void	setLabel(char* label);
 
 	// UI Handlers
-	void	Render();
-	void	Enable();
-	void	Disable();
+	
+	//void	Enable();
+	//void	Disable();
 
 private:
 	ImVec2	m_vec2;
-	int		m_width;
-	int		m_height;
-	bool	m_active;
+	//int		m_width;
+	//int		m_height;
+	//bool	m_active;
 	//char	m_label[MAXLABELSZ];
 
 };

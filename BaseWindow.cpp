@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "BaseWindow.h"
 #include <string.h>
 #include <stdio.h>

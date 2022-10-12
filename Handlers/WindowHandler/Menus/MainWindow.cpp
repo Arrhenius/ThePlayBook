@@ -9,9 +9,10 @@
 MainWindow::MainWindow()
 {
 	memset(this, 0, sizeof(this));
-	m_width = 0;
-	m_height = 0;
-	strcpy(m_label, "Main Window");
+	setLabel( (char*)"Main Window" );
+	//m_width = 0;
+	//m_height = 0;
+	//strcpy(m_label, "Main Window");
 }
 
 MainWindow::~MainWindow()
@@ -19,6 +20,7 @@ MainWindow::~MainWindow()
 	memset(this, 0, sizeof(this));
 }
 
+#if 0
 int MainWindow::getWidth()
 {
 	return m_width;
@@ -33,6 +35,7 @@ char* MainWindow::getLabel()
 {
 	return m_label;
 }
+
 
 void MainWindow::setWidth(int width)
 {
@@ -57,10 +60,12 @@ void MainWindow::setLabel(char* label)
 	else
 		m_label[0] = '\0';
 }
+#endif
+
 
 void MainWindow::Render()
 {
-	if (m_active == false)
+	if (getIsActive() == false)
 		return;
 	//ImGui::GetIO
 	ImGui::SetNextWindowPos(ImVec2(1920 * 0.5f, 1080 * 0.5f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
@@ -68,13 +73,14 @@ void MainWindow::Render()
 	m_vec2 = ImGui::GetWindowSize();
 	ImVec2 v2(1920, 1080);
 	ImGui::SetNextWindowSize(v2, 0);
-	if (ImGui::Begin(m_label, 0, 0))
+	if (ImGui::Begin(getLabel(), 0, 0))
 	{
 
 	}
 	ImGui::End();
 }
 
+#if 0
 
 void MainWindow::Enable()
 {
@@ -85,3 +91,4 @@ void MainWindow::Disable()
 {
 	m_active = false;
 }
+#endif
